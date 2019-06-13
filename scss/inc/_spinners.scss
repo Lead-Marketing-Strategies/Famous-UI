@@ -1,0 +1,40 @@
+// Spinners
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+$spinner-width: 2rem;
+$spinner-height: 2rem;
+$spinner-border-width: 0.25em;
+
+$spinner-width-sm: 1rem;
+$spinner-height-sm: 1rem;
+$spinner-border-width-sm: 0.2em;
+
+
+@keyframes spinner-border {
+  to { transform: rotate(360deg); }
+}
+
+.fui-spinner-border {
+  vertical-align: text-bottom;
+  display: inline-block;
+  border: $spinner-border-width solid rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  width: $spinner-width;
+  height: $spinner-height;
+  border-top: $spinner-border-width solid currentColor;
+  -webkit-animation: spinner-border 1.2s linear infinite; /* Safari */
+  animation: spinner-border 1.2s linear infinite;
+  border-width: $spinner-border-width;
+}
+
+.fui-spinner-dark {
+  border-color: rgba(255, 255, 255, 0.2);
+  border-top: $spinner-border-width solid currentColor;
+  border-width: $spinner-border-width;
+}
+
+.fui-spinner-border-sm {
+  width: $spinner-width-sm;
+  height: $spinner-height-sm;
+  border-width: $spinner-border-width-sm;
+}

@@ -1,0 +1,142 @@
+// Calendar
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+.fui-calendar-container {
+  select {
+    width: 100%;
+  }
+}
+
+.fui-calendar-container-dropdown {
+  .fui-calendar-type {
+    display: none;
+    position: absolute;
+    border: 1px solid #c8c8c8;
+    z-index: 20;
+    background: #fff;
+    padding-left: 10px;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 0.3s;
+
+    .fui-calendar {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &.fui-calendar-container-dropdown-open {
+    .fui-calendar-type {
+      display: block;
+      padding-left: 0;
+      height: auto;
+
+    }
+
+    .fui-calendar-standard {
+      @media(min-width: 768px) {
+        width: 500px;
+      }
+    }
+  }
+}
+
+.fui-calendar-type-fancy {
+  height: 100%;
+  width: 300px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  border: 1px solid #c8c8c8;
+
+  .fui-calendar-nav {
+    display: inline-block;
+    cursor: pointer;
+
+    &.fui-calendar-nav-prev {
+      float: left;
+
+      &:hover{
+        i{
+          color: darken($primary, 20%) !important;
+        }
+      }
+    }
+
+    &.fui-calendar-nav-next {
+      float: right;
+      
+      &:hover {
+        i {
+          color: darken($primary, 20%) !important;
+        }
+      }
+    }
+  }
+
+  .fui-calendar-current {
+    display: inline-block;
+  }
+
+  .fui-calendar-day {
+    cursor: pointer;
+    border: 1px solid transparent;
+    margin: 0;
+    padding: 10px;
+
+    &.fui-calendar-day-today {
+      background-color: #eee;
+    }
+
+    &.fui-calendar-day-selected {
+      background-color: $primary;
+      color: white;
+    }
+
+    &:hover {
+      background-color: $primary;
+      color: white;
+    }
+  }
+
+  .fui-calendar-header {
+    font-size: 18px;
+    padding: 15px;
+    background: $primary;
+
+    *{
+      color: white;
+    }
+  }
+
+  .fui-calendar-days {
+    left: 50%;
+    padding: 0;
+
+    table{
+      width: 100%;
+      border: none;
+      border-collapse: collapse;
+      thead{
+        background: darken($primary, 10%);
+        th{
+          font-size: 14px;
+          padding: 10px 5px !important;
+          color: white;
+        }
+      }
+
+    }
+  }
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

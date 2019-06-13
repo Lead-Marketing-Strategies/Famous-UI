@@ -1,0 +1,213 @@
+/*
+*
+* Variables
+*/
+
+$primary: #008cff;
+$secondary: #40434e;
+
+// EXTRA COLORS
+$success: #00C851;
+$info: #17a2b8;
+$warning: #ffbb33;
+$danger: #ff4444;
+$gray: gray;
+$dark: #555;
+$gold: #bda531;
+$muted: #949494;
+$light: #eee;
+$white: white;
+$black: black;
+
+// BUTTON COLOR
+$colors: (
+  'primary': $primary,
+  'secondary': $secondary,
+  'success': $success,
+  'info': $info,
+  'warning': $warning,
+  'danger': $danger,
+  'gray': $gray,
+  'gold': $gold,
+  'muted': $muted,
+  'dark': $dark,
+  'light': $light,
+  'white': $white,
+  'black': $black
+  );
+
+
+// DEFAULT TEXT COLOR
+$default-text-color: #333;
+
+// TYPOGRAPHY
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// FONT DEFAULTS
+$line-height: 1.25;
+$font-size-base: 16px;
+$font-margin-base: 5px;
+$font-weight-base: 400;
+$font-weight-bold: bold;
+
+// DEFAULT FONT
+$font-family-base: -apple-system,
+BlinkMacSystemFont,
+"Segoe UI",
+Roboto,
+"Helvetica Neue",
+Arial,
+sans-serif,
+"Apple Color Emoji",
+"Segoe UI Emoji",
+"Segoe UI Symbol";
+
+// FONT SIZES
+$h1: 46px;
+$h2: 36px;
+$h3: 28px;
+$h4: 22px;
+$h5: 18px;
+$h6: 16px;
+
+
+// UTILITIES
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+// CONTAINER
+$container: 1150px;
+$container-fluid: 100%;
+
+
+// DEFAULT PADDING
+$default-padding: 10px;
+
+
+// BORDER RADIUS
+$border-radius: 4px;
+$radius: true;
+
+
+// BREAD CRUMB DIVIDER
+$breadcrumb-divider: quote("/");
+
+
+
+@import 'inc/reset';
+
+
+
+// GRID
+$grid__bp-sm: 576;
+$grid__bp-md: 768;
+$grid__bp-lg: 992;
+$grid__bp-xl: 1200;
+$grid__cols: 12;
+
+$map-grid-props: ('': 0,
+  '-sm': $grid__bp-sm,
+  '-md': $grid__bp-md,
+  '-lg': $grid__bp-lg,
+  '-xl': $grid__bp-xl);
+
+@mixin create-mq($breakpoint, $min-or-max) {
+  @if($breakpoint==0) {
+    @content;
+  }
+
+  @else {
+    @media screen and (#{$min-or-max}-width: $breakpoint *1px) {
+      @content;
+    }
+  }
+}
+
+@mixin create-col-classes($modifier, $grid-cols, $breakpoint) {
+  @include create-mq($breakpoint, 'min') {
+    .col#{$modifier}-offset-0 {
+      margin-left: 0;
+    }
+
+    @for $i from 1 through $grid-cols {
+      .col#{$modifier}-#{$i} {
+        flex-basis: (100 / ($grid-cols / $i)) * 1%;
+        max-width: (100 / ($grid-cols / $i)) * 1%;
+      }
+
+      .col#{$modifier}-offset-#{$i} {
+        margin-left: (100 / ($grid-cols / $i)) * 1%;
+      }
+    }
+  }
+}
+
+@each $modifier,
+$breakpoint in $map-grid-props {
+  @if($modifier=='') {
+    $modifier: '-xs';
+  }
+
+  @include create-mq($breakpoint - 1, 'max') {
+    .hidden#{$modifier}-down {
+      display: none !important;
+    }
+  }
+
+  @include create-mq($breakpoint, 'min') {
+    .hidden#{$modifier}-up {
+      display: none !important;
+    }
+  }
+}
+
+.fui-container {
+  max-width: $grid__bp-md * 1px;
+  margin: 0 auto;
+
+  &-fluid {
+    margin: 0;
+    max-width: 100%;
+  }
+}
+
+[class*="col-"]{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  @each $modifier,
+  $breakpoint in $map-grid-props {
+    @include create-col-classes($modifier, $grid__cols, $breakpoint);
+  }
+}
+
+
+@import 'inc/reset';
+@import 'inc/typography';
+@import 'inc/navbar';
+@import 'inc/buttons';
+@import 'inc/jumbotron';
+@import 'inc/form';
+@import 'inc/dropdown';
+@import 'inc/cards';
+@import 'inc/list';
+@import 'inc/blockquote';
+@import 'inc/table';
+@import 'inc/code';
+@import 'inc/alerts';
+@import 'inc/badges';
+@import 'inc/modal';
+@import 'inc/tabs';
+@import 'inc/accordion';
+@import 'inc/breadcrumb';
+@import 'inc/progressbar';
+@import 'inc/tooltip';
+@import 'inc/spinners';
+@import 'inc/carousel';
+@import 'inc/calendar';
+@import 'inc/utilities';

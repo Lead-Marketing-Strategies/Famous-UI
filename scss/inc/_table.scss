@@ -1,0 +1,57 @@
+// TABLE
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+.table-fluid {
+    max-width: 100%;
+    width: 100%;
+    overflow-x: auto;
+
+    tr,
+    td,
+    table {
+        white-space: nowrap;
+    }
+}
+
+table.fui-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    display: table;
+
+    td,
+    th,
+    td,
+    th {
+        padding: 10px 15px;
+        display: table-cell;
+        text-align: left;
+        vertical-align: middle;
+    }
+
+    thead {
+        background-color: $light;
+
+        th {
+            padding: 15px !important;
+        }
+    }
+
+    th {
+        font-weight: 500;
+    }
+
+    tr {
+        border-bottom: 1px solid silver;
+
+    }
+
+}
+
+
+
+.table-striped {
+    tr:nth-child(even) {
+        background-color: $light;
+    }
+}

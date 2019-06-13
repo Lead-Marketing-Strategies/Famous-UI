@@ -1,0 +1,88 @@
+// DROPDOWN
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+.fui-dropdown {
+    position: relative;
+
+    &.menu-showing>.fui-dropdown-menu {
+        display: flex !important;
+    }
+
+    li {
+        list-style: none;
+        margin: 0;
+    }
+
+    &.fui-btn>.fui-dropdown-menu {
+        top: 100% !important;
+    }
+
+
+    &>.fui-dropdown-menu {
+        border: 1px solid #ccc;
+        display: none;
+        flex-direction: column;
+        min-width: 150px;
+        width: 100%;
+        background: white;
+        padding: 5px 0;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        animation: dropdown 0.220s forwards ease-in-out;
+        z-index: 1000;
+
+
+        @if $radius {
+            border-radius: $border-radius;
+        }
+
+
+        a {
+            display: block;
+            color: #333;
+            text-align: left;
+            // white-space: nowrap;
+            padding: 10px 15px;
+
+            &.active,
+            &.is-active,
+            &:hover {
+                color: white;
+                background: $primary;
+            }
+        }
+
+        
+    }
+
+    &.carret:after,
+    &>button:after,
+    &>div:not(.fui-dropdown-menu):after,
+    &>a:after {
+        display: inline-block;
+        width: 0;
+        height: 0;
+        margin-left: 10px;
+        vertical-align: 4px;
+        content: " ";
+        border-top: 5px solid;
+        border-right: 5px solid transparent;
+        border-bottom: 0;
+        border-left: 5px solid transparent;
+    }
+
+}
+
+// DROPDOWN ANIMATION
+@keyframes dropdown {
+    0% {
+        opacity: 0;
+        top: 50%
+    }
+
+    100% {
+        opacity: 1;
+        top: 100%;
+    }
+}

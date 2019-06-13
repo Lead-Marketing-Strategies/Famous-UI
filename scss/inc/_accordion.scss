@@ -1,0 +1,52 @@
+// ACCORDION
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+.fui-accordion {
+    transition: 0.4s;
+    width: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.fui-accordion-container {
+    &.default {
+
+        .fui-accordion {
+            padding: 15px;
+            background-color: $light;
+        }
+
+        .active,
+        .fui-accordion:hover {
+            background-color: darken($light, 15%);
+        }
+
+        .fui-accordion:after {
+            content: '\002B';
+            color: #777;
+            font-weight: bold;
+            float: right;
+            font-size: 20px;
+            margin-left: 5px;
+        }
+
+        .active:after {
+            content: "\2212";
+        }
+
+        .fui-panel-box {
+            border: 1px solid $light;
+            padding: 15px;
+        }
+    }
+
+    .fui-panel {
+        transition: max-height 0.2s ease-out;
+        background-color: white;
+        max-height: 0;
+        overflow: hidden;
+    }
+
+
+}

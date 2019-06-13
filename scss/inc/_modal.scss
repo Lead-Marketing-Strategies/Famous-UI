@@ -1,0 +1,132 @@
+// MODAL
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+
+.fui-modal {
+    transition: all 0.500s !important;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    max-height: 100vh;
+    padding: 80px 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -10;
+
+    opacity: 0;
+    overflow-y: auto !important;
+
+
+    .fui-modal-container {
+        position: relative;
+        margin: 0 auto;
+        z-index: 1350;
+    }
+
+}
+
+
+
+.fui-modal-title {
+    margin: 0;
+    font-size: 20px;
+}
+
+
+.fui-modal-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: $light;
+    padding: 10px 15px;
+
+    .modal-close {
+        padding: 10px;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+}
+
+
+.fui-modal-container {
+    display: none;
+    max-width: 580px;
+    width: 100%;
+    height: auto;
+    background: white;
+    border: 1px solid darken($light, 15%);
+
+    &.modal-sm {
+        max-width: 580px;
+    }
+
+    &.modal-md {
+        max-width: 750px;
+    }
+
+    &.modal-lg {
+        max-width: 1100px;
+    }
+
+    .fui-modal-body {
+        padding: 15px;
+    }
+
+    .fui-modal-footer {
+        padding: 10px 15px;
+        background: #eee;
+    }
+
+}
+
+.fui-modal.modal-show {
+    opacity: 1 !important;
+    z-index: 1250 !important;
+    animation: modalbg 1s ease-in forwards;
+    pointer-events: initial !important;
+    .fui-modal-container {
+        display: block !important;
+
+        &.animation-added {
+            animation: animateUp 0.5s forwards;
+        }
+    }
+
+}
+
+
+.modal-exit {
+    top: 0 !important;
+    opacity: 0;
+    z-index: -1;
+}
+
+// MODAL BACKGROUND
+@keyframes modalbg {
+    0% {
+        background: rgba(black, 0);
+    }
+
+    100% {
+        background: rgba(black, 0.5);
+
+    }
+}
+
+// MODAL CONTAINER ANIMATION ON SHOWING
+@keyframes animateUp {
+    0% {
+        transform: translateY(-50px)
+    }
+
+    100% {
+        transform: translateY(0px)
+
+    }
+}

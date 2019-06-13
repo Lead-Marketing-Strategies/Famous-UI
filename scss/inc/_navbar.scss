@@ -1,0 +1,434 @@
+// NAVBAR
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+
+
+/*
+* * Prevent Overflow hidden for Sidebar Menu and Modal
+*/
+
+.noScroll {
+    overflow: hidden !important;
+}
+
+/*
+* * Fixed Top Menu
+*/
+.fixed-top {
+    width: 100%;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+}
+
+/*
+* * Main Navbar scss
+*/
+.fui-navbar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 0 $default-padding;
+
+    /*
+    * * Container and Container fluid
+    */
+    &>.fui-container,
+    &>.fui-container-fluid {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    /*
+    * * Navbar Brand | Logo
+    */
+    .fui-brand {
+        display: inline-block;
+        margin-right: 16px;
+        line-height: inherit;
+        white-space: nowrap;
+    }
+
+    /*
+    * * Navigation Menu Main Container
+    */
+    .fui-menu-box {
+        display: none;
+        align-items: center;
+        flex-basis: 100%;
+
+        /*
+        * * Navigation Menu | UL TAG
+        */
+        .fui-menu {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            margin: 0;
+
+            /*
+            * * Navigation Item | LI TAG
+            */
+            .nav-item {
+                margin: 0;
+
+                /*
+                * * Navigation Link | A TAG
+                */
+                .nav-link {
+                    display: inline-block;
+                }
+            }
+
+            /*
+            * * Default fix for all LI tags inside the Menu
+            */
+            li {
+                list-style: none;
+                padding: 0;
+            }
+        }
+    }
+
+    /*
+    * * Sidebar Menu Toggler on Mobile
+    */
+    .fui-toggler {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: $primary;
+        background-color: white;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-left: auto;
+        padding: 10px 15px;
+
+        border: none;
+        outline: none;
+        cursor: pointer;
+
+        @if $radius {
+            border-radius: $border-radius;
+        }
+
+        &:hover {
+            color: white;
+            background: darken($primary, 10%) !important;
+        }
+
+    }
+
+
+    /*
+    * * Default Famous UI Menu Styling for Navbar
+    * * Remove .default-nav from the .navbar to remove all the defaults styles,
+    * * that applied by Famous UI OR You can change the scss below
+    */
+    &.fui-default-nav {
+        background-color: white;
+
+        /*
+        * * Default Navbar Styles
+        */
+
+        .fui-brand {
+            padding-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            a {
+                display: block;
+                font-weight: 400;
+                font-size: $h3;
+                color: $primary;
+
+                &:hover {
+                    color: darken($primary, 15%) !important;
+                }
+
+                img {
+                    display: block;
+                }
+            }
+        }
+
+        .fui-menu {
+            .nav-link {
+                color: $secondary;
+                padding: 20px 15px;
+
+                &:focus,
+                &:hover {
+                    color: white;
+                    background-color: $primary;
+                }
+            }
+
+            .active {
+                .nav-link {
+                    color: white;
+                    background-color: $primary;
+                }
+            }
+        }
+
+        .slidedown,
+        .sideNavbar {
+            background-color: white !important;
+        }
+
+        /*
+        * * Primary Navbar Styles
+        */
+
+        @each $button , $value in $colors {
+            &.bg-#{$button} {
+                background: $value;
+
+                .fui-brand {
+                    a {
+                        color: white;
+
+                        &:hover {
+                            color: lighten($value, 15%) !important;
+                        }
+                    }
+                }
+
+                .menu-close {
+                    background: darken($value, 10%);
+                    &:hover {
+                        background: darken($value, 15%);
+                    }
+
+                }
+
+                .fui-menu {
+                    .nav-link {
+                        color: white;
+
+                        &:focus,
+                        &:hover {
+                            color: white;
+                            background-color: darken($value, 10%);
+                        }
+                    }
+
+                    .active {
+                        .nav-link {
+                            color: white;
+                            background-color: darken($value, 10%);
+                        }
+                    }
+                }
+
+                .slidedown,
+                .sideNavbar {
+                    background-color: $value !important;
+                }
+
+            }
+        }
+    }
+}
+
+
+
+
+
+// NAVBAR EXPANDED
+.fui-navbar.fui-expanded {
+
+    // TOGGLER
+    .fui-toggler {
+        display: none !important;
+    }
+
+    // MENU BOX
+    .fui-menu-box {
+        display: flex !important;
+    }
+
+    // MENU
+    .fui-menu {
+        flex-direction: row;
+    }
+
+    // CONTAINER
+    &>.fui-container,
+    &>.fui-container-fluid {
+        flex-wrap: nowrap;
+    }
+
+}
+
+// EXPANDING LIMITS
+@each $modifier,
+$breakpoint in $map-grid-props {
+    @if($modifier !='') {
+        @media screen and (min-width: $breakpoint +'px') {
+            .fui-navbar.fui-expand#{$modifier} {
+
+                // TOGGLER
+                .fui-toggler {
+                    display: none;
+                }
+
+                // MENU BOX
+                .fui-menu-box {
+                    display: flex !important;
+                }
+
+                // MENU
+                .fui-menu {
+                    flex-direction: row;
+                }
+
+                // CONTAINER
+                &>.fui-container,
+                &>.fui-container-fluid {
+                    flex-wrap: nowrap;
+                }
+            }
+
+        }
+    }
+}
+
+
+/*
+* * Sidebar styles for Mobile
+*/
+.sideNavbar {
+    transition: all 0.5s !important;
+    display: block !important;
+    max-width: 300px;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden !important;
+    overflow-y: auto;
+
+    position: fixed;
+    top: 0;
+    height: 100%;
+    left: -100%;
+    z-index: 1250;
+
+    // MENU
+    .fui-menu {
+        flex-direction: column;
+
+        .nav-item {
+            position: relative;
+            width: 100%;
+            text-align: center;
+
+            >.btn {
+                margin: 10px 0 !important;
+            }
+
+            >.input {
+                margin: 10px 0 !important;
+            }
+        }
+
+        .nav-link {
+            display: block;
+            width: 100%;
+            padding: 10px 10px !important;
+            text-align: center;
+        }
+
+    }
+
+    // DROPDOWN
+    .dropdown {
+        &>.dropdown-menu {
+            position: unset !important;
+            background: white;
+            max-width: 100% !important;
+            min-width: 100% !important;
+            margin-top: 0 !important;
+            border-radius: 0 !important;
+            border: none;
+
+            li {
+                a {
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    // SIDEBAR SHOWING
+    &.toggled {
+        left: 0;
+    }
+
+    // SIDEBAR MENU CLOSE
+    .menu-close {
+        display: block !important;
+        background: darken($primary,10%);
+        color: white;
+        text-align: center;
+        padding: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+
+        &:hover{
+            background: darken($primary, 15%);
+        }
+
+    }
+}
+
+// MOBILE SIDEBAR TOGGLER
+.toggled~.shadow-fixed {
+    width: 100%;
+    min-height: 100vh;
+    background: rgba(black, 0.8);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 500;
+}
+
+// MENU CLOSE BUTTON ON SIDEBAR HIDDEN ON DESKTOP DEVICES
+.menu-close {
+    display: none;
+}
+
+// SLIDEDOWN
+.slidedown {
+    overflow: hidden;
+    display: block !important;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 1150;
+    width: 100%;
+
+    .fui-menu {
+        flex-direction: column !important;
+        width: 100%;
+
+        .nav-item {
+            width: 100%;
+            text-align: center;
+
+            .nav-link {
+                width: 100%;
+            }
+        }
+    }
+}
